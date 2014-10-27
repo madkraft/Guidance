@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    
+	<title>Guidance</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+	
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <div class="row clearfix sr-only">
+        <div class="col-md-12 column">
+            <form class="form-inline ss-question-list" role="list" action="https://docs.google.com/forms/d/1Cj5qFLBWtGsRdT25d4gsU-QFjOzUdwCNG9DnSvPJl9o/formResponse" method="POST" id="ss-form" target="_self" onsubmit="">
+                </form>
+        </div>
+    </div>
+    
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            
+            <h1 class="text-center">
+                Earnings Call<br>
+            </h1>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="input-group" id="unified-inputs">
+                <label class="ss-q-item-label" for="entry_415480621"></label>
+                <input type="text" name="entry.415480621" value="" class="ss-q-short form-control" dir="auto" id="entry_415480621" aria-label="EMPLOYEE_ID  " placeholder="Your employee ID">
+
+                <!-- <label class="ss-q-item-label" for="entry_1979453450"></label>
+                <input type="text" name="entry.1979453450" value="" class="ss-q-short form-control" dir="auto" id="entry_1979453450" aria-label="RIC  " placeholder="RIC"> -->
+
+                <label class="ss-q-item-label" for="entry_68351821"></label>
+                <input type="text" name="entry.68351821" value="" class="ss-q-short form-control" dir="auto" id="entry_68351821" aria-label="Company_name  " placeholder="Company name">
+
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12 column" >
+                <div class="input-group" id="unified-inputs">
+                    <label class="ss-q-item-label" for="entry_1543204550"></label>
+                    <select class="form-control" name="entry.1543204550" id="entry_1543204550" aria-label="Period  ">            
+                        <option value="Q1">Q1</option> 
+                        <option value="Q2">Q2</option> 
+                        <option value="Q3">Q3</option> 
+                        <option value="Q4">Q4</option>
+                        <option disabled>──</option>
+                        <option value="H1">H1</option>
+                        <option value="H2">H2</option>
+                    </select>
+
+                    <label class="ss-q-item-label" for="entry_1730017673"></label>
+                    <input type="text" name="entry.1730017673" value="" class="ss-q-short form-control Year" dir="auto" id="entry_1730017673" aria-label="Year  " placeholder="Year">
+
+                                
+                    
+                </div>
+        </div>
+    </div>
+
+
+    
+    <div class="row clearfix">        
+        <div class="col-md-12 column">
+
+                <textarea type="text" name="entry.1624834262" rows="14" cols="0" class="form-control" id="entry_1624834262" dir="auto" aria-label="Guidance  " placeholder="Your text, Sir"></textarea>
+            
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <button type="button" class="btn btn-danger btn-lg btn-block has-spinner" id="ButtonSubmit" onclick="postContactToGoogle()">Submit</button>
+        </div>
+    </div>
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <script>
+        function postContactToGoogle() {
+
+            // var RIC = $('#entry_1979453450').val();
+            
+            var Company_name = $('#entry_68351821').val();
+
+            var EMPLOYEE_ID = $('#entry_415480621').val();
+            
+            var Year = $('#entry_1730017673').val();          
+
+            var Period = $('#entry_1543204550').val();
+                
+            var Text = $('#entry_1624834262').val();    
+                    
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/1Cj5qFLBWtGsRdT25d4gsU-QFjOzUdwCNG9DnSvPJl9o/formResponse",
+                    data: {    
+                                // "entry_1979453450": RIC,
+                                
+                                "entry_68351821": Company_name,
+
+                                "entry_415480621": EMPLOYEE_ID,
+                                
+                                "entry_1730017673": Year,
+
+                                "entry_1543204550": Period,
+                                
+                                "entry_1624834262": Text,
+                        },
+                    type: "POST",
+                    dataType: "xml",
+                    statusCode: {
+                        0: function () {
+                            window.location.replace("ThankYou.html");
+                        },
+                        200: function () {
+                            window.location.replace("ThankYou.html");
+                        }
+                    }
+                });
+
+        }
+
+
+    $(".btn").click(function(){
+        $(this).button('loading').queue(function() {
+            $(this).prop('disabled', true);
+            $('input').prop('disabled', true); 
+            $('textarea').prop('disabled', true);
+            $('select').prop('disabled', true); 
+        });        
+    });
+    </script>
+</body>
+</html>
