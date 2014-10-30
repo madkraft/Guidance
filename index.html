@@ -37,7 +37,7 @@
         <div class="col-md-12 column">
             <div class="input-group" id="unified-inputs">
                 <label class="ss-q-item-label" for="entry_415480621"></label>
-                <input type="text" name="entry.415480621" value="" class="ss-q-short form-control" dir="auto" id="entry_415480621" aria-label="EMPLOYEE_ID  " placeholder="Your employee ID">
+                <input type="text" name="entry.415480621" value="" class="ss-q-short form-control" dir="auto" id="entry_415480621" aria-label="Employee name  " placeholder="Your name">
 
                 <!-- <label class="ss-q-item-label" for="entry_1979453450"></label>
                 <input type="text" name="entry.1979453450" value="" class="ss-q-short form-control" dir="auto" id="entry_1979453450" aria-label="RIC  " placeholder="RIC"> -->
@@ -67,28 +67,39 @@
 
                     <label class="ss-q-item-label" for="entry_1730017673"></label>
                     <input type="text" name="entry.1730017673" value="" class="ss-q-short form-control Year" dir="auto" id="entry_1730017673" aria-label="Year  " placeholder="Year">
-
-                                
-                    
                 </div>
         </div>
     </div>
 
-
+<!-- Text area -->
     
     <div class="row clearfix">        
         <div class="col-md-12 column">
-
-                <textarea type="text" name="entry.1624834262" rows="14" cols="0" class="form-control" id="entry_1624834262" dir="auto" aria-label="Guidance  " placeholder="Your text, Sir"></textarea>
-            
+            <textarea type="text" name="entry.1624834262" rows="6" cols="0" class="form-control" id="entry_1624834262" dir="auto" aria-label="Highlights  " placeholder="Highlights / numbers here"></textarea>
+        </div>
+    </div>
+    <div class="row clearfix">        
+        <div class="col-md-12 column">
+            <textarea type="text" name="entry.1110007067" rows="6" cols="0" class="form-control" id="entry_1110007067" dir="auto" aria-label="Trends  " placeholder="Trends / main issues"></textarea>
+        </div>
+    </div>
+    <div class="row clearfix">        
+        <div class="col-md-12 column">
+            <textarea type="text" name="entry.393411379" rows="6" cols="0" class="form-control" id="entry_393411379" dir="auto" aria-label="Corporate actions  " placeholder="Planned corporate actions / right issues"></textarea>
         </div>
     </div>
 
+<!-- end of text area -->
+
+
+<!-- Button -->
     <div class="row clearfix">
         <div class="col-md-12 column">
             <button type="button" class="btn btn-danger btn-lg btn-block has-spinner" id="ButtonSubmit" onclick="postContactToGoogle()">Submit</button>
         </div>
     </div>
+<!-- end of button -->
+
 </div>
 
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
@@ -101,13 +112,17 @@
             
             var Company_name = $('#entry_68351821').val();
 
-            var EMPLOYEE_ID = $('#entry_415480621').val();
+            var EMPLOYEE_name = $('#entry_415480621').val();
             
             var Year = $('#entry_1730017673').val();          
 
             var Period = $('#entry_1543204550').val();
                 
-            var Text = $('#entry_1624834262').val();    
+            var Highlights = $('#entry_1624834262').val();
+
+            var Trends = $('#entry_1110007067').val(); 
+
+            var CORAX = $('#entry_393411379').val();  
                     
                 $.ajax({
                     url: "https://docs.google.com/forms/d/1Cj5qFLBWtGsRdT25d4gsU-QFjOzUdwCNG9DnSvPJl9o/formResponse",
@@ -116,13 +131,17 @@
                                 
                                 "entry_68351821": Company_name,
 
-                                "entry_415480621": EMPLOYEE_ID,
+                                "entry_415480621": EMPLOYEE_name,
                                 
                                 "entry_1730017673": Year,
 
                                 "entry_1543204550": Period,
                                 
-                                "entry_1624834262": Text,
+                                "entry_1624834262": Highlights,
+
+                                "entry_1110007067": Trends,
+
+                                "entry_393411379": CORAX,
                         },
                     type: "POST",
                     dataType: "xml",
